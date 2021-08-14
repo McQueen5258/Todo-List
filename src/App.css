@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+}
+
+.app-body {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-name {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    height: 300px;
+    justify-content: space-evenly;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+}
+
+.user-name-input {
+    border-width: 0;
+    border-bottom: 1px solid black;
+
+    text-align: center;
+    font-size: 40px;
+    outline: none;
+}
+
+@media screen and (max-width: 460px) {
+    .user-name-input {
+        font-size: 20px
+    }
+    .welcome {
+        flex-direction: column;
+        align-items: center;
+        font-size:15px;
+    }
+}
+
+
+/* todo */
+.todo {
+    width: 700px;
+    height: 900px;
+
+    margin-top: 100px;
+
+}
+
+.todo-title {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.say-hello {
+    margin: 0;
+}
+
+.date {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: grey;
+    font-size: 10px;
+}
+
+.add-todo-form {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    border: 1px solid grey;
+}
+
+.add-todo-input {
+    width: 100%;
+    font-size: 20px;
+    border-radius: 0;
+    border-right: 0;
+    border: 0;
+    outline: none;
+}
+
+.add-todo-btn {
+    border-radius: 0;
+    border: 0;
+    width: 60px;
+}
+.tasks {
+    margin-top: 30px;
+}
+.tasks-title {
+    border-bottom: 1px solid grey;
+}
+.task-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    align-self: center;
+
+}
+
+.task {
+    display: flex;
+    border: 1px solid black;
+    height: 40px;
+    margin-top: 10px
+}
+
+.task-btn {
+    border: 1px solid black;
+    width: 40px;
+    height: 38px;
+}
+
+.task-delete {
+    width: 40px;
+}
+
+.done {}
+
+.done-btn {
+    background-image: url(./image/done.svg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.done-title {
+    text-decoration: line-through;
+    color: grey;
+
+}
+
+
+@media screen and (max-width: 740px) {
+    .todo {
+        width: 400px;
+    }
+
+    .say-hello {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .todo {
+        width: 260px;
+    }
+
+    .add-todo-input {
+        font-size: 16px;
+    }
+}
+
+
+.bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bar-right {
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
+}

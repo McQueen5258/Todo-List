@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Todo, UserName } from './Components/Entrance';
+import { Todo, UserName, Bar } from './Components/Entrance';
+import { Fragment } from 'react';
 import './App.css';
 
 export default function App() {
@@ -48,15 +49,22 @@ export default function App() {
         <div className="app-body" style={themeStyles[theme].body}>
             {
                 haveUserName ?
-                    <Todo
-                        userName={userName}
+                    <Fragment>
+                        <Bar
+                            userName={userName}
+                            theme={theme}
+                            setTheme={setTheme}
+                        />
+                        <Todo
+                            userName={userName}
 
-                        theme={theme}
-                        setTheme={setTheme}
+                            theme={theme}
+                            setTheme={setTheme}
 
-                        todoList={todoList}
-                        setTodoList={setTodoList}
-                    />
+                            todoList={todoList}
+                            setTodoList={setTodoList}
+                        />
+                    </Fragment>
                     :
                     <UserName
                         haveUserName={haveUserName}
@@ -65,7 +73,7 @@ export default function App() {
                         userName={userName}
                         setUserName={setUserName}
 
-                        theme={theme}                        
+                        theme={theme}
                     />
             }
         </div>

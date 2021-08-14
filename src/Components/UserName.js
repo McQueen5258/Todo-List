@@ -31,7 +31,6 @@ export default function UserName(props) {
     }
     return (
         <div className="user-name">
-            <h3 className="welcome"><span>Welcome. </span><span>What do you want me to call you?</span></h3>
                 <input
                     // value=''
                     type="text"

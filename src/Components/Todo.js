@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Task, Bar } from './Entrance';
+import { Task } from './Entrance';
 
 export default function Todo(props) {
     var date = new Date();
@@ -29,9 +29,6 @@ export default function Todo(props) {
     function handleCreate(event) {
         event.preventDefault()
         if (event.target[0].value) {
-            // if (props.todoList.open) {
-                
-            // }
             props.setTodoList(({ open, finished }) => ({
                 open: [...open, {id: Date.now(),title:event.target[0].value , done:false}],
                 finished: [...finished]
@@ -47,11 +44,6 @@ export default function Todo(props) {
 
     return (
         <div className="todo">
-            <Bar
-                userName={props.userName}
-                theme={props.theme}
-                setTheme={props.setTheme}
-            />
             <div className="todo-title">
                 <h3 className="say-hello" style={themeStyles[props.theme].sayHello}>Hi {props.userName}. What are you ToDos for today?</h3>
                 <p className="date" style={{ color: 'grey' }}>{date.toDateString()}</p>
@@ -62,7 +54,7 @@ export default function Todo(props) {
                     className="add-todo-input"
                     placeholder="e.g Update Wordpress ..."
                 />
-                <button type="submit" className="add-todo-btn" >Add</button>
+                <button type="submit" className="add-todo-btn" ></button>
             </form>
             <div>
                 <div className='open-tasks tasks'>
@@ -98,6 +90,7 @@ export default function Todo(props) {
                         props.todoList.finished.map(({ id, title, done }) => {
                             return <Task
                             key={id}
+                            id={id}
                             title={title}
                             done={done}
                             todoList={props.todoList}

@@ -1,71 +1,40 @@
 import React from 'react';
+import { Task } from './Entrance';
 
-
-export default function Task(props) {
+export default function Tasks(props) {
     let themeStyles = {
         'light': {
-            'text': {
+            'tasks-title': {
                 color: 'black',
-            },
-            'task': {
-                color: 'black',
-                backgroundColor: 'white'
             }
         },
-        'dark': {
-            'text': {
-                color: 'white',
-            },
-            'task': {
-                color: 'white',
-                backgroundColor: '#272727'
+            'dark': {
+                'tasks-title': {
+                    color: 'white',
+                }
             }
-        }
     }
-    function handleDone() {
-        if (props.done) {
-            let obj = props.todoList.finished.find(item => item.id === props.id);
-            obj.done = false;
-            props.setTodoList(({ open, finished }) => ({
-                open: [...open, { id: Date.now(), title: obj.title, done: obj.done }],
-                finished: [...finished.filter(ex => ex.id !== props.id)],
-            }))
-        } else {
-            let obj = props.todoList.open.find(item => item.id === props.id);
-            obj.done = true;
-            props.setTodoList(({ open, finished }) => ({
-                open: [...open.filter(ex => ex.id !== props.id)],
-                finished: [...finished, { id: Date.now(), title: obj.title, done: obj.done }]
-            }))
-            console.log(obj, props);
-        }
-    }
-    function handleDelete() {
-        if (props.done) {
-            let obj = props.todoList.finished.find(item => item.id === props.id);
-            obj.done = false;
-            props.setTodoList(({ open, finished }) => ({
-                open: [...open],
-                finished: [...finished.filter(ex => ex.id !== props.id)],
-            }))
-        } else {
-            let obj = props.todoList.open.find(item => item.id === props.id);
-            obj.done = true;
-            props.setTodoList(({ open, finished }) => ({
-                open: [...open.filter(ex => ex.id !== props.id)],
-                finished: [...finished]
-            }))
-        }
-    }
-    
     return (
-        <div
-            className={props.done ? "task done" : "task"}
-            style={themeStyles[props.theme].task}
-        >
-            <div className={props.done ? "task-btn done-btn" : "task-btn"} onClick={handleDone}></div>
-            <div className={props.done ? "task-title done-title" : "task-title"}>{props.title}</div>
-            <div className="task-delete" onClick={handleDelete}></div>
+        <div className={props.openOrFinished+'-tasks tasks'}>
+            <p
+                className="tasks-title"
+                style={themeStyles[props.theme]['tasks-title']}
+            >
+                {props.TasksTitleText} Tasks({props.todoList[props.openOrFinished].length})
+            </p>
+            {
+                props.todoList[props.openOrFinished].map(({ id, title, done }) => {
+                    return <Task
+                        key={id}
+                        id={id}
+                        title={title}
+                        done={done}
+                        todoList={props.todoList}
+                        setTodoList={props.setTodoList}
+                        theme={props.theme}
+                    />
+                })
+            }
         </div>
     )
 }

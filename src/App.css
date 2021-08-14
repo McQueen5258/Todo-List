@@ -131,9 +131,12 @@ body {
 .task-btn {
     border: 1px solid black;
     width: 42px;
-    height: 38px;
+    height: 36px;
 
     cursor:pointer;
+
+    align-self: center;
+    margin-left: 1px;
 }
 
 .task-delete {
@@ -151,7 +154,7 @@ body {
 
 .done-btn {
     background-image: url(./image/done.svg);
-    background-size: 100%;
+    background-size: 85%;
     background-position: center;
     background-repeat: no-repeat;
 }

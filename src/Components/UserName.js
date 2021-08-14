@@ -23,10 +23,10 @@ export default function UserName(props) {
     }
 
     function handleSubmit(event) {
-        if(event.keyCode === 13 && event.target.value !== '' && event.target.value !== null) {
+        const {value} = event.target;
+        if(event.keyCode === 13 && value !== '' && value !== null) {
             props.setHaveUserName(true);
-            props.setUserName(event.target.value);
-            console.log(event.target.value);
+            props.setUserName(value);
         }
     }
     return (

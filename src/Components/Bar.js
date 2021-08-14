@@ -36,12 +36,14 @@ export default function Bar(props) {
     }
 
     function handleClick() {
-        console.log(props.theme,props)
-        if (props.theme === 'light') {
-            props.setTheme('dark');
-        } else {
-            props.setTheme('light');
-        }
+        const { setTheme, theme } = props;
+        setTheme(theme === 'light'? 'dark': 'light');
+        
+        // if (props.theme === 'light') {
+        //     props.setTheme('dark');
+        // } else {
+        //     props.setTheme('light');
+        // }
     }
     return (
         <div className="bar" style={themeStyles[props.theme].bar}>

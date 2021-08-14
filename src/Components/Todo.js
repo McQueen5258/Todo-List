@@ -1,105 +1,68 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Task } from './Entrance';
+import { Tasks } from './Entrance';
 
-export default function Todo(props) {
-    var date = new Date();
-    // console.log(date.toDateString());
-    // console.log(date.toDateString().split(" ")[1]);
-    // console.log(date.toDateString().split(" ")[2]);
+export default function Todo({ userName, theme, setTheme, todoList, setTodoList}) {
+    var date = new Date().toDateString().split(" ");
+
     let themeStyles = {
         'light': {
             'sayHello': {
                 color: 'black',
-            },
-            'tasks-title': {
-                color: 'black',
             }
         },
-            'dark': {
-                'sayHello': {
-                    color: 'white',
-                },
-                'tasks-title': {
-                    color: 'white',
-                }
+        'dark': {
+            'sayHello': {
+                color: 'white',
             }
+        }
     }
 
     function handleCreate(event) {
         event.preventDefault()
         if (event.target[0].value) {
-            props.setTodoList(({ open, finished }) => ({
-                open: [...open, {id: Date.now(),title:event.target[0].value , done:false}],
+            setTodoList(({ open, finished }) => ({
+                open: [...open, { id: Date.now(), title: event.target[0].value, done: false }],
                 finished: [...finished]
             }))
         }
-        console.log('add',props.todoList)
+        console.log('add', todoList)
     }
 
     useEffect(() => {
         document.getElementById("myform").reset();
-    },[props.todoList]);
+    }, [todoList]);
 
 
     return (
         <div className="todo">
             <div className="todo-title">
-                <h3 className="say-hello" style={themeStyles[props.theme].sayHello}>Hi {props.userName}. What are you ToDos for today?</h3>
-                <p className="date" style={{ color: 'grey' }}>{date.toDateString()}</p>
+                <h3 className="say-hello" style={themeStyles[theme].sayHello}>Hi {userName}. What are you ToDos for today?</h3>
+                <p className="date" style={{ color: 'grey' }}>{date[0]+', '+date[1]+' '+date[2]+' '+date[3] }</p>
             </div>
             <form id="myform" className="add-todo-form" onSubmit={handleCreate}>
                 <input
                     type="text"
                     className="add-todo-input"
-                    placeholder="e.g Update Wordpress ..."
+                    placeholder="  e.g Update Wordpress ..."
                 />
                 <button type="submit" className="add-todo-btn" ></button>
             </form>
-            <div>
-                <div className='open-tasks tasks'>
-                    <p
-                        className="tasks-title"
-                        style={themeStyles[props.theme]['tasks-title']}
-                    >
-                        Open Rasks({props.todoList.open.length})
-                    </p>
-                    {
-                        props.todoList.open.map(({ id, title, done }) => {
-                            return <Task
-                            key={id}
-                            id={id}
-                            title={title}
-                            done={done}
-                            todoList={props.todoList}
-                            setTodoList={props.setTodoList}
-                            theme={props.theme}
-                        />
-                        })
-                    }
-                </div>
-                <div className='Finished-tasks tasks'>
-                    <p
-                        className="tasks-title"
-                        style={themeStyles[props.theme]['tasks-title']}
-                    >
-                        Finished Tasks({props.todoList.finished.length})
-
-                    </p>
-                    {
-                        props.todoList.finished.map(({ id, title, done }) => {
-                            return <Task
-                            key={id}
-                            id={id}
-                            title={title}
-                            done={done}
-                            todoList={props.todoList}
-                            setTodoList={props.setTodoList}
-                            theme={props.theme}
-                            />
-                        })
-                    }
-                </div>
+            <div style={{marginBottom: '70px'}}>
+                <Tasks
+                    openOrFinished={'open'}
+                    TasksTitleText={'Open'}
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                    theme={theme}
+                />
+                <Tasks
+                    openOrFinished={'finished'}
+                    TasksTitleText={'Finished'}
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                    theme={theme}
+                />
             </div>
         </div>
     )
@@ -109,6 +72,6 @@ export default function Todo(props) {
 
 
 
-// props.todoList.todos.map(({ id, title }) =>
+// todoList.todos.map(({ id, title }) =>
 {/* <div key={id}></div> */ }
 // )

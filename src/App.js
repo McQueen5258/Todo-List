@@ -5,12 +5,12 @@ import { Fragment } from 'react';
 import './App.css';
 
 export default function App() {
-    let [userName, setUserName] = useState(localStorage.getItem("User name"));
-    let [haveUserName, setHaveUserName] = useState(localStorage.getItem("User name") !== null && localStorage.getItem("User name") !== 'null');
+    const [userName, setUserName] = useState(localStorage.getItem("User name"));
+    const [haveUserName, setHaveUserName] = useState(localStorage.getItem("User name") !== null && localStorage.getItem("User name") !== 'null');
 
-    let [theme, setTheme] = useState(localStorage.getItem("Theme") !== null ? localStorage.getItem("Theme") : 'light');
+    const [theme, setTheme] = useState(localStorage.getItem("Theme") !== null ? localStorage.getItem("Theme") : 'light');
 
-    let [todoList, setTodoList] = useState(
+    const [todoList, setTodoList] = useState(
         JSON.parse(localStorage.getItem("Todo list")) === null ?
             {
                 open: [],

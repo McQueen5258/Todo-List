@@ -1,7 +1,11 @@
+@font-face {
+    font-family: 'font_gt';
+    src: url(./gt-walsheim-light-webfont.woff);
+}
 body {
     margin: 0;
+    font-family: 'font_gt';
 }
-
 .app-body {
     width: 100%;
     min-height: 100vh;

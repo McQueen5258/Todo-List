@@ -16,14 +16,14 @@ export default function Todo(props) {
                 color: 'black',
             }
         },
-        'dark': {
-            'sayHello': {
-                color: 'white',
-            },
-            'tasks-title': {
-                color: 'white',
+            'dark': {
+                'sayHello': {
+                    color: 'white',
+                },
+                'tasks-title': {
+                    color: 'white',
+                }
             }
-        }
     }
 
     function handleCreate(event) {

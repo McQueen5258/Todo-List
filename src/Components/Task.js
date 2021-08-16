@@ -19,6 +19,9 @@ export default function Task(props) {
             'task': {
                 color: 'white',
                 backgroundColor: '#272727'
+            },
+            'task-btn': {
+                backgroundColor: 'black'
             }
         }
     }
@@ -63,7 +66,11 @@ export default function Task(props) {
             className={props.done ? "task done" : "task"}
             style={themeStyles[props.theme].task}
         >
-            <div className={props.done ? "task-btn done-btn" : "task-btn"} onClick={handleDone}></div>
+            <div
+                className={props.done ? "task-btn done-btn" : "task-btn"}
+                onClick={handleDone}
+                style={themeStyles[props.theme]['task-btn']}
+            ></div>
             <div className={props.done ? "task-title done-title" : "task-title"}>{props.title}</div>
             <div className="task-delete" onClick={handleDelete}></div>
         </div>
